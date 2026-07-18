@@ -5,7 +5,9 @@ __pycache__/
 
 # dbt
 target/
+dbt_packages/
 logs/
+*.log
 dbt.log
 
 # Credentials / secrets
