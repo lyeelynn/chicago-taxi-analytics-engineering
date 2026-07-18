@@ -1,0 +1,18 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# dbt
+target/
+dbt_packages/
+logs/
+*.log
+dbt.log
+
+# Credentials / secrets
+.env
+profiles.yml
+
+# macOS
+.DS_Store
