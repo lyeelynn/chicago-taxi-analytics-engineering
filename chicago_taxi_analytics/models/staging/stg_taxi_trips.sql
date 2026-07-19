@@ -15,7 +15,9 @@ SELECT DISTINCT
     COALESCE(extras, 0) AS extras,
     trip_total,
     TRIM(payment_type) AS payment_type,
-    TRIM(company) AS company,
+    UPPER(
+            REGEXP_REPLACE(TRIM(company),'[^a-zA-Z0-9 ]','')
+        ) AS taxi_company,
     pickup_latitude,
     pickup_longitude,
     TRIM(pickup_location) AS pickup_location,
