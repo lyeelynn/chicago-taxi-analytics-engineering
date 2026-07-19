@@ -5,7 +5,6 @@ sources:
     description: >
       Public Chicago Taxi Trips dataset provided by the City of Chicago
       and available through the BigQuery public datasets.
-
     database: bigquery-public-data
     schema: chicago_taxi_trips
 
