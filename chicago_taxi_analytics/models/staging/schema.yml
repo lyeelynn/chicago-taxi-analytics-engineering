@@ -11,18 +11,75 @@ models:
         data_tests:
           - not_null
           - unique
-
+     
       - name: taxi_id
         description: Identifier for the taxi.
         data_tests:
           - not_null
-
+      
       - name: trip_start_timestamp
         description: Timestamp when the trip started.
         data_tests:
           - not_null
-
+      
+      - name: trip_end_timestamp
+        description: Timestamp when the trip ended.
+      
       - name: trip_seconds
         description: Duration of the trip in seconds.
         data_tests:
           - not_null
+      
+      - name: trip_miles
+        description: Distance of the trip in miles.
+      
+      - name: pickup_census_tract
+        description: The census tract where the trip began. For privacy, this could be null.
+
+      - name: dropoff_census_tract
+        description: The census tract where the trip ended. For privacy, this could be null.
+        
+      - name: pickup_community_area
+        description: The community area where the trip began.
+      
+      - name: dropoff_community_area
+        description: The community area where the trip ended.
+
+      - name: fare
+        description: The fare amount for the trip.
+
+      - name: tips
+        description: The tip for the trip. Cash tips generally will not be recorded.
+
+      - name: tolls
+        description: The tolls for the trip.
+
+      - name: extras
+        description: The extra charges for the trip.
+
+      - name: trip_total
+        description: The total amount charged for the trip.
+
+      - name: payment_type
+        description: The payment method used for the trip.
+
+      - name: company
+        description: The taxi company that provided the trip.
+
+      - name: pickup_latitude
+        description: The latitude of the center of the pickup census tract or the community area if the census tract has been hidden for privacy.
+
+      - name: pickup_longitude
+        description: The longitude of the center of the pickup census tract or the community area if the census tract has been hidden for privacy.
+
+      - name: pickup_location
+        description: The location of the center of the pickup census tract or the community area if the census tract has been hidden for privacy.
+
+      - name: dropoff_latitude
+        description: The latitude of the center of the dropoff census tract or the community area if the census tract has been hidden for privacy.
+
+      - name: dropoff_longitude
+        description: The longitude of the center of the dropoff census tract or the community area if the census tract has been hidden for privacy.
+
+      - name: dropoff_location
+        description: The location of the center of the dropoff census tract or the community area if the census tract has been hidden for privacy.
