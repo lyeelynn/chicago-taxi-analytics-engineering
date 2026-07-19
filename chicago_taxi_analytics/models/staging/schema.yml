@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: stg_taxi_trips
+    description: >
+      Cleaned and standardized Chicago taxi trip data.
+
+    columns:
+      - name: unique_key
+        description: Unique identifier for each taxi trip.
+        data_tests:
+          - not_null
+          - unique
+
+      - name: taxi_id
+        description: Identifier for the taxi.
+        data_tests:
+          - not_null
+
+      - name: trip_start_timestamp
+        description: Timestamp when the trip started.
+        data_tests:
+          - not_null
+
+      - name: trip_seconds
+        description: Duration of the trip in seconds.
+        data_tests:
+          - not_null
