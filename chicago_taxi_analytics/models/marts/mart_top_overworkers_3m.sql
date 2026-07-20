@@ -1,11 +1,9 @@
 WITH cte_date AS (
-    SELECT 
-        DATE(MAX(session_start_timestamp) - INTERVAL 3 month) as period_start_date,
-        DATE(MAX(session_end_timestamp)) as period_end_date
-    -- for local test
-    FROM 'int_taxi_work_sessions.parquet'
-    -- for dbt prod
-    -- FROM {{ ref('int_taxi_work_sessions') }}  
+    {{ get_rolling_period(
+        'session_start_timestamp',
+        ref('int_taxi_work_sessions'),
+        3
+    ) }}
 ),
 
 cte_agg AS (

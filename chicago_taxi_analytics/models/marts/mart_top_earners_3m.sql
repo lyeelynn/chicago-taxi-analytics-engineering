@@ -1,11 +1,9 @@
 WITH cte_date AS (
-    SELECT 
-        DATE(MAX(trip_date) - INTERVAL 3 month) as period_start_date,
-        MAX(trip_date) as period_end_date
-    -- for local test
-    FROM 'int_taxi_daily_metrics.parquet'
-    -- for dbt prod
-    -- FROM {{ ref('int_taxi_daily_metrics') }}  
+    {{ get_rolling_period(
+        'trip_date',
+        ref('int_taxi_daily_metrics'),
+        3
+    ) }}
 ),
 
 cte_agg AS (
