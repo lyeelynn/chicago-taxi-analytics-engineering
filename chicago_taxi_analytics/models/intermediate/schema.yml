@@ -1,0 +1,152 @@
+version: 2
+
+models:
+
+  # ============================================================
+  # Daily taxi-level metrics
+  # Grain: 1 row per taxi per day
+  # ============================================================
+  - name: int_taxi_daily_metrics
+    description: >
+      Daily aggregated metrics for each taxi, including trip activity,
+      revenue, driver earnings, and holiday information.
+      Each row represents one taxi on one active trip date.
+
+    columns:
+      - name: taxi_id
+        description: Unique identifier of the taxi.
+        data_tests:
+          - not_null
+
+      - name: trip_date
+        description: Date on which the taxi started the trips.
+        data_tests:
+          - not_null
+
+      - name: day_of_week
+        description: Day of the week corresponding to the trip date.
+
+      - name: is_holiday
+        description: Flag indicating whether the trip date is a US federal holiday. 1 = holiday, 0 = non-holiday.
+
+      - name: holiday_name
+        description: Name of the US federal holiday, if applicable, else null.
+
+      - name: taxi_company
+        description: >
+          Company associated with the taxi. If a taxi_id is tied to multiple companies, 
+          only keep the first company alphabetically for that taxi_id on that trip_date.
+
+      - name: total_trips
+        description: Total number of trips completed by the taxi on the given date.
+
+      - name: total_miles
+        description: Total miles traveled across all trips completed by the taxi on the given date.
+
+      - name: max_trip_miles
+        description: Maximum distance of a single trip completed by the taxi on the given date.
+
+      - name: total_seconds
+        description: Total trip duration in seconds across all trips completed by the taxi on the given date.
+
+      - name: max_trip_seconds
+        description: Maximum duration of a single trip completed by the taxi on the given date.
+
+      - name: first_trip_start_datetime
+        description: Timestamp of the taxi's first trip start on the given date.
+
+      - name: last_trip_end_datetime
+        description: Timestamp of the taxi's last trip end on the given date.
+
+      - name: total_revenue
+        description: Total gross revenue generated from fares, tips, tolls, and extras.
+
+      - name: total_driver_earnings
+        description: Driver earnings are the sum of fare and tips.
+
+      - name: total_fare
+        description: Total fare amount collected from all trips.
+
+      - name: total_tips
+        description: Total tips received across all trips.
+
+      - name: total_tolls
+        description: Total toll charges across all trips.
+
+      - name: total_extras
+        description: Total additional charges across all trips.
+
+      - name: revenue_per_trip
+        description: Average gross revenue generated per trip.
+
+      - name: driver_earnings_per_trip
+        description: Average driver earnings generated per trip.
+
+      - name: fare_per_trip
+        description: Average fare amount per trip.
+
+      - name: tips_per_trip
+        description: Average tips received per trip.
+
+      - name: tolls_per_trip
+        description: Average toll charges per trip.
+
+      - name: extras_per_trip
+        description: Average extras charged per trip.
+
+      - name: seconds_per_trip
+        description: Average trip duration in seconds.
+
+      - name: miles_per_trip
+        description: Average trip distance in miles.
+
+
+  # ============================================================
+  # Taxi work sessions
+  # Grain: 1 row per taxi per work session
+  # ============================================================
+  - name: int_taxi_work_sessions
+    description: >
+      Identifies individual taxi work sessions based on the time between
+      consecutive trips. A new work session is created when the break between
+      consecutive trips is greater than 3 hours. Each row represents one work
+      session for one taxi, including session duration, trip activity, and break
+      characteristics. A short break is defined as a break of less than 8 hours
+      before the start of a session, while a long shift is defined as a session
+      lasting more than 9 hours.
+
+    columns:
+      - name: taxi_id
+        description: Unique identifier of the taxi.
+        data_tests:
+          - not_null
+
+      - name: session_id
+        description: Unique identifier for the taxi work session.
+        data_tests:
+          - not_null
+
+      - name: session_start_timestamp
+        description: Timestamp when the taxi's work session started.
+        data_tests:
+          - not_null
+
+      - name: session_end_timestamp
+        description: Timestamp when the taxi's work session ended.
+        data_tests:
+          - not_null
+
+      - name: session_duration_hours
+        description: Duration of the taxi work session in hours.
+
+      - name: break_before_session_hours
+        description: Number of hours between the previous work session and the start of the current session.
+
+      - name: total_trips
+        description: Total number of trips completed during the work session.
+
+      - name: is_long_shift
+        description: Flag indicating whether the work session lasted at least 9 hours. 1 = long shift, 0 = not a long shift.
+
+      - name: is_short_break
+        description: Flag indicating whether the break before the session was shorter than 8 hours. 1 = short break, 0 = not a short break.
