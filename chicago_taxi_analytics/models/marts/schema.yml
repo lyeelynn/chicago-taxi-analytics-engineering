@@ -1,0 +1,311 @@
+version: 2
+
+models:
+
+  # ============================================================
+  # Top Earners - Last 3 Months
+  # Grain: 1 row per taxi_id
+  # ============================================================
+  - name: mart_top_earners_3m
+    description: >
+      Identifies taxi IDs with the highest earnings and tip performance
+      during the latest 3-month period. Includes trip activity,
+      revenue metrics, efficiency metrics, and ranking indicators.
+
+    columns:
+
+      - name: taxi_id
+        description: Unique identifier of the taxi.
+        data_tests:
+          - not_null
+          - unique
+
+      - name: period_start_date
+        description: Start date of the analysis period (last 3 months).
+
+      - name: period_end_date
+        description: End date of the analysis period (latest available trip date in dataset).
+
+      - name: first_active_date
+        description: First date the taxi recorded activity within the analysis period.
+
+      - name: last_active_date
+        description: Last date the taxi recorded activity within the analysis period.
+
+      - name: active_days
+        description: Number of distinct days the taxi was active.
+
+      - name: total_miles
+        description: Total trip distance completed by the taxi.
+
+      - name: total_trip_hours
+        description: Total hours spent completing trips.
+
+      - name: total_trips
+        description: Total number of trips completed.
+
+      - name: total_fare
+        description: Total fare collected from trips.
+
+      - name: total_tips
+        description: Total tips earned.
+
+      - name: total_extras
+        description: Total additional charges collected.
+
+      - name: total_tolls
+        description: Total toll charges collected.
+
+      - name: total_revenue
+        description: Total gross revenue generated from fares, tips, tolls, and extras.
+
+      - name: total_driver_earnings
+        description: Total driver earnings from fares and tips.
+
+      - name: fare_per_trip
+        description: Average fare earned per trip.
+
+      - name: tips_per_trip
+        description: Average tips earned per trip.
+
+      - name: revenue_per_trip
+        description: Average revenue generated per trip.
+
+      - name: driver_earnings_per_trip
+        description: Average driver earnings per trip.
+
+      - name: miles_per_trip
+        description: Average miles travelled per trip.
+
+      - name: fare_per_active_day
+        description: Average fare generated per active day.
+
+      - name: tips_per_active_day
+        description: Average tips earned per active day.
+
+      - name: revenue_per_active_day
+        description: Average revenue generated per active day.
+
+      - name: driver_earnings_per_active_day
+        description: Average driver earnings per active day.
+
+      - name: fare_per_mile
+        description: Average fare generated per mile.
+
+      - name: tips_per_mile
+        description: Average tips generated per mile.
+
+      - name: extras_per_mile
+        description: Average extras generated per mile.
+
+      - name: tolls_per_mile
+        description: Average tolls generated per mile.
+
+      - name: revenue_per_mile
+        description: Average revenue generated per mile.
+
+      - name: driver_earnings_per_mile
+        description: Average driver earnings generated per mile.
+
+      - name: tips_pct_of_fare
+        description: Tips as a percentage of fare.
+
+      - name: tips_pct_of_driver_earnings
+        description: Tips as a percentage of driver earnings.
+
+      - name: rank_by_total_revenue
+        description: Ranking based on total revenue generated.
+
+      - name: rank_by_total_driver_earnings
+        description: Ranking based on total driver earnings.
+
+      - name: rank_by_total_tips
+        description: Ranking based on total tips earned.
+
+      - name: rank_by_tips_per_trip
+        description: Ranking based on average tips earned per trip.
+
+
+  # ============================================================
+  # Top Overworkers - Last 3 Months
+  # Grain: 1 row per taxi_id
+  # ============================================================
+  - name: mart_top_overworkers_3m
+    description: >
+      Identifies taxi IDs with potentially excessive working patterns
+      during the latest 3-month period. Measures working hours,
+      long shifts, short breaks, and generates an overworker score.
+
+    columns:
+
+      - name: taxi_id
+        description: Unique identifier of the taxi.
+        data_tests:
+          - not_null
+          - unique
+
+      - name: period_start_date
+        description: Start date of the analysis period (last 3 months).
+
+      - name: period_end_date
+        description: End date of the analysis period (latest trip date available in the dataset).
+
+      - name: total_sessions
+        description: Total number of work sessions identified.
+
+      - name: total_working_hours
+        description: Total hours worked across all sessions.
+
+      - name: max_working_hours
+        description: Longest single work session duration.
+
+      - name: total_trips
+        description: Total trips completed across all sessions.
+
+      - name: working_hours_per_session
+        description: Average working hours per session.
+
+      - name: trips_per_session
+        description: Average trips completed per session.
+
+      - name: avg_break_hours
+        description: Average break duration before starting a new session.
+
+      - name: min_break_hours
+        description: Shortest break duration recorded.
+
+      - name: long_shift_count
+        description: Number of sessions exceeding the long shift threshold (more than 9 hours).
+
+      - name: long_shift_pct
+        description: Percentage of sessions classified as long shifts.
+
+      - name: short_break_count
+        description: Number of sessions following insufficient breaks (less than 8 hours).
+
+      - name: short_break_pct
+        description: Percentage of sessions following insufficient breaks.
+
+      - name: total_working_hours_percentile
+        description: Percentile ranking of total working hours compared with other taxis.
+
+      - name: overworker_score
+        description: >
+          Composite score measuring excessive working behaviour.
+          50% weightage on total_working_hours_percentile
+          30% weightage on long_shift_pct
+          20% weightage on short_break_pct
+
+      - name: overworker_rank
+        description: Ranking based on overworker score.
+
+
+  # ============================================================
+  # Holiday Activities
+  # Grain: 1 row per holiday date
+  # ============================================================
+  - name: mart_holiday_activities
+    description: >
+      Measures the impact of US federal holidays on taxi demand,
+      revenue, and driver earnings by comparing holiday performance
+      against the previous 4-week non-holiday baseline.
+
+    columns:
+
+      - name: trip_date
+        description: Date of the holiday.
+        data_tests:
+          - not_null
+          - unique
+
+      - name: holiday_name
+        description: Name of the US federal holiday.
+        data_tests:
+          - not_null
+
+      - name: baseline_period_start
+        description: Start date of the 4-week baseline period.
+
+      - name: baseline_period_end
+        description: End date of the 4-week baseline period.
+
+      - name: active_taxi_count
+        description: Number of taxis operating on the holiday.
+
+      - name: total_trips
+        description: Total trips completed on the holiday.
+
+      - name: total_driver_earnings
+        description: Total driver earnings generated on the holiday.
+
+      - name: total_revenue
+        description: Total gross revenue generated on the holiday.
+
+      - name: total_miles
+        description: Total miles travelled on the holiday.
+
+      - name: total_trip_hours
+        description: Total trip hours completed on the holiday.
+
+      - name: driver_earnings_per_trip
+        description: Average driver earnings per trip.
+
+      - name: revenue_per_trip
+        description: Average revenue generated per trip.
+
+      - name: trips_per_taxi
+        description: Average trips completed per active taxi.
+
+      - name: baseline_4w_avg_daily_active_taxi_count
+        description: Average daily active taxis during previous 4 weeks.
+
+      - name: baseline_4w_avg_daily_trips
+        description: Average daily trips during previous 4 weeks.
+
+      - name: baseline_4w_avg_daily_driver_earnings
+        description: Average daily driver earnings during previous 4 weeks.
+
+      - name: baseline_4w_avg_daily_revenue
+        description: Average daily revenue during previous 4 weeks.
+
+      - name: baseline_4w_avg_daily_miles
+        description: Average daily miles travelled during previous 4 weeks.
+
+      - name: baseline_4w_avg_daily_trip_hours
+        description: Average daily trip hours during previous 4 weeks.
+
+      - name: baseline_4w_avg_daily_driver_earnings_per_trip
+        description: Average driver earnings per trip during previous 4 weeks.
+
+      - name: baseline_4w_avg_daily_revenue_per_trip
+        description: Average revenue per trip during previous 4 weeks.
+
+      - name: baseline_4w_avg_daily_trips_per_taxi
+        description: Average trips per taxi during previous 4 weeks.
+
+      - name: pct_change_active_taxi_count
+        description: Percentage change in active taxis versus baseline.
+
+      - name: pct_change_trips
+        description: Percentage change in trips versus baseline.
+
+      - name: pct_change_driver_earnings
+        description: Percentage change in driver earnings versus baseline.
+
+      - name: pct_change_revenue
+        description: Percentage change in revenue versus baseline.
+
+      - name: pct_change_miles
+        description: Percentage change in miles travelled versus baseline.
+
+      - name: pct_change_trip_hours
+        description: Percentage change in trip hours versus baseline.
+
+      - name: pct_change_driver_earnings_per_trip
+        description: Percentage change in driver earnings per trip versus baseline.
+
+      - name: pct_change_revenue_per_trip
+        description: Percentage change in revenue per trip versus baseline.
+
+      - name: pct_change_trips_per_taxi
+        description: Percentage change in trips per taxi versus baseline.
