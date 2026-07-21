@@ -24,10 +24,7 @@ SELECT DISTINCT
     dropoff_latitude,
     dropoff_longitude,
     TRIM(dropoff_location) AS dropoff_location
--- local testing
-FROM 'scripts/chicago_taxi.parquet' 
--- for dbt prod
--- FROM {{ source('chicago_taxi', 'taxi_trips') }}
+FROM {{ source('chicago_taxi', 'taxi_trips') }}
 WHERE NULLIF(TRIM(unique_key),'') IS NOT NULL
 AND NULLIF(TRIM(taxi_id),'') IS NOT NULL
 AND trip_start_timestamp IS NOT NULL
