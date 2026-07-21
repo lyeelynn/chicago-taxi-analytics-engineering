@@ -1,115 +1,115 @@
 holiday_date,holiday_name
-01-01-2013,New Year's Day
-21-01-2013,"Birthday of Martin Luther King, Jr."
-18-02-2013,Washington's Birthday
-27-05-2013,Memorial Day
-04-07-2013,Independence Day
-02-09-2013,Labor Day
-14-10-2013,Columbus Day
-11-11-2013,Veterans Day
-28-11-2013,Thanksgiving Day
-25-12-2013,Christmas Day
-01-01-2014,New Year’s Day
-20-01-2014,"Birthday of Martin Luther King, Jr."
-17-02-2014,Washington’s Birthday
-26-05-2014,Memorial Day
-04-07-2014,Independence Day
-01-09-2014,Labor Day
-13-10-2014,Columbus Day
-11-11-2014,Veterans Day
-27-11-2014,Thanksgiving Day
-25-12-2014,Christmas Day
-01-01-2015,New Year’s Day
-19-01-2015,"Birthday of Martin Luther King, Jr."
-16-02-2015,Washington’s Birthday
-25-05-2015,Memorial Day
-03-07-2015,Independence Day
-07-09-2015,Labor Day
-12-10-2015,Columbus Day
-11-11-2015,Veterans Day
-26-11-2015,Thanksgiving Day
-25-12-2015,Christmas Day
-01-01-2016,New Year’s Day
-18-01-2016,"Birthday of Martin Luther King, Jr."
-15-02-2016,Washington’s Birthday
-30-05-2016,Memorial Day
-04-07-2016,Independence Day
-05-09-2016,Labor Day
-10-10-2016,Columbus Day
-11-11-2016,Veterans Day
-24-11-2016,Thanksgiving Day
-26-12-2016,Christmas Day
-02-01-2017,New Year’s Day
-16-01-2017,"Birthday of Martin Luther King, Jr."
-20-02-2017,Washington’s Birthday
-29-05-2017,Memorial Day
-04-07-2017,Independence Day
-04-09-2017,Labor Day
-09-10-2017,Columbus Day
-10-11-2017,Veterans Day
-23-11-2017,Thanksgiving Day
-25-12-2017,Christmas Day
-01-01-2018,New Year’s Day
-15-01-2018,"Birthday of Martin Luther King, Jr."
-19-02-2018,Washington’s Birthday
-28-05-2018,Memorial Day
-04-07-2018,Independence Day
-03-09-2018,Labor Day
-08-10-2018,Columbus Day
-12-11-2018,Veterans Day
-22-11-2018,Thanksgiving Day
-25-12-2018,Christmas Day
-01-01-2019,New Year’s Day
-21-01-2019,"Birthday of Martin Luther King, Jr."
-18-02-2019,Washington’s Birthday
-27-05-2019,Memorial Day
-04-07-2019,Independence Day
-02-09-2019,Labor Day
-14-10-2019,Columbus Day
-11-11-2019,Veterans Day
-28-11-2019,Thanksgiving Day
-25-12-2019,Christmas Day
-01-01-2020,New Year’s Day
-20-01-2020,"Birthday of Martin Luther King, Jr."
-17-02-2020,Washington’s Birthday
-25-05-2020,Memorial Day
-03-07-2020,Independence Day
-07-09-2020,Labor Day
-12-10-2020,Columbus Day
-11-11-2020,Veterans Day
-26-11-2020,Thanksgiving Day
-25-12-2020,Christmas Day
-01-01-2021,New Year's Day
-18-01-2021,"Birthday of Martin Luther King, Jr."
-20-01-2021,Inauguration Day
-15-02-2021,Washington’s Birthday
-31-05-2021,Memorial Day
-18-06-2021,Juneteenth National Independence Day
-05-07-2021,Independence Day
-06-09-2021,Labor Day
-11-10-2021,Columbus Day
-11-11-2021,Veterans Day
-25-11-2021,Thanksgiving Day
-24-12-2021,Christmas Day
-31-12-2022,New Year's Day
-17-01-2022,"Birthday of Martin Luther King, Jr."
-21-02-2022,Washington’s Birthday
-30-05-2022,Memorial Day
-20-06-2022,Juneteenth National Independence Day
-04-07-2022,Independence Day
-05-09-2022,Labor Day
-10-10-2022,Columbus Day
-11-11-2022,Veterans Day
-24-11-2022,Thanksgiving Day
-26-12-2022,Christmas Day
-02-01-2023,New Year’s Day
-16-01-2023,"Birthday of Martin Luther King, Jr."
-20-02-2023,Washington’s Birthday
-29-05-2023,Memorial Day
-19-06-2023,Juneteenth National Independence Day
-04-07-2023,Independence Day
-04-09-2023,Labor Day
-09-10-2023,Columbus Day
-10-11-2023,Veterans Day
-23-11-2023,Thanksgiving Day
-25-12-2023,Christmas Day
+2013-01-01,New Year's Day
+2013-01-21,"Birthday of Martin Luther King, Jr."
+2013-02-18,Washington's Birthday
+2013-05-27,Memorial Day
+2013-07-04,Independence Day
+2013-09-02,Labor Day
+2013-10-14,Columbus Day
+2013-11-11,Veterans Day
+2013-11-28,Thanksgiving Day
+2013-12-25,Christmas Day
+2014-01-01,New Year’s Day
+2014-01-20,"Birthday of Martin Luther King, Jr."
+2014-02-17,Washington’s Birthday
+2014-05-26,Memorial Day
+2014-07-04,Independence Day
+2014-09-01,Labor Day
+2014-10-13,Columbus Day
+2014-11-11,Veterans Day
+2014-11-27,Thanksgiving Day
+2014-12-25,Christmas Day
+2015-01-01,New Year’s Day
+2015-01-19,"Birthday of Martin Luther King, Jr."
+2015-02-16,Washington’s Birthday
+2015-05-25,Memorial Day
+2015-07-03,Independence Day
+2015-09-07,Labor Day
+2015-10-12,Columbus Day
+2015-11-11,Veterans Day
+2015-11-26,Thanksgiving Day
+2015-12-25,Christmas Day
+2016-01-01,New Year’s Day
+2016-01-18,"Birthday of Martin Luther King, Jr."
+2016-02-15,Washington’s Birthday
+2016-05-30,Memorial Day
+2016-07-04,Independence Day
+2016-09-05,Labor Day
+2016-10-10,Columbus Day
+2016-11-11,Veterans Day
+2016-11-24,Thanksgiving Day
+2016-12-26,Christmas Day
+2017-01-02,New Year’s Day
+2017-01-16,"Birthday of Martin Luther King, Jr."
+2017-02-20,Washington’s Birthday
+2017-05-29,Memorial Day
+2017-07-04,Independence Day
+2017-09-04,Labor Day
+2017-10-09,Columbus Day
+2017-11-10,Veterans Day
+2017-11-23,Thanksgiving Day
+2017-12-25,Christmas Day
+2018-01-01,New Year’s Day
+2018-01-15,"Birthday of Martin Luther King, Jr."
+2018-02-19,Washington’s Birthday
+2018-05-28,Memorial Day
+2018-07-04,Independence Day
+2018-09-03,Labor Day
+2018-10-08,Columbus Day
+2018-11-12,Veterans Day
+2018-11-22,Thanksgiving Day
+2018-12-25,Christmas Day
+2019-01-01,New Year’s Day
+2019-01-21,"Birthday of Martin Luther King, Jr."
+2019-02-18,Washington’s Birthday
+2019-05-27,Memorial Day
+2019-07-04,Independence Day
+2019-09-02,Labor Day
+2019-10-14,Columbus Day
+2019-11-11,Veterans Day
+2019-11-28,Thanksgiving Day
+2019-12-25,Christmas Day
+2020-01-01,New Year’s Day
+2020-01-20,"Birthday of Martin Luther King, Jr."
+2020-02-17,Washington’s Birthday
+2020-05-25,Memorial Day
+2020-07-03,Independence Day
+2020-09-07,Labor Day
+2020-10-12,Columbus Day
+2020-11-11,Veterans Day
+2020-11-26,Thanksgiving Day
+2020-12-25,Christmas Day
+2021-01-01,New Year's Day
+2021-01-18,"Birthday of Martin Luther King, Jr."
+2021-01-20,Inauguration Day
+2021-02-15,Washington’s Birthday
+2021-05-31,Memorial Day
+2021-06-18,Juneteenth National Independence Day
+2021-07-05,Independence Day
+2021-09-06,Labor Day
+2021-10-11,Columbus Day
+2021-11-11,Veterans Day
+2021-11-25,Thanksgiving Day
+2021-12-24,Christmas Day
+2022-12-31,New Year's Day
+2022-01-17,"Birthday of Martin Luther King, Jr."
+2022-02-21,Washington’s Birthday
+2022-05-30,Memorial Day
+2022-06-20,Juneteenth National Independence Day
+2022-07-04,Independence Day
+2022-09-05,Labor Day
+2022-10-10,Columbus Day
+2022-11-11,Veterans Day
+2022-11-24,Thanksgiving Day
+2022-12-26,Christmas Day
+2023-01-02,New Year’s Day
+2023-01-16,"Birthday of Martin Luther King, Jr."
+2023-02-20,Washington’s Birthday
+2023-05-29,Memorial Day
+2023-06-19,Juneteenth National Independence Day
+2023-07-04,Independence Day
+2023-09-04,Labor Day
+2023-10-09,Columbus Day
+2023-11-10,Veterans Day
+2023-11-23,Thanksgiving Day
+2023-12-25,Christmas Day
