@@ -100,4 +100,4 @@ LEFT JOIN taxi_details td
     on dd.taxi_id = td.taxi_id
     and dd.trip_date = td.trip_date
 LEFT JOIN {{ ref('us_federal_holidays') }} AS hol
-    ON dd.trip_date = hol.holiday_date 
+    ON dd.trip_date = DATE(hol.holiday_date)

@@ -13,7 +13,7 @@ WITH base AS (
 trip_gaps AS (
     SELECT
         *,
-        DATE_DIFF('minute', previous_trip_end_timestamp, trip_start_timestamp) / 60.0 AS break_hours
+        TIMESTAMP_DIFF(trip_start_timestamp, trip_start_timestamp, MINUTE) / 60.0 AS break_hours
     FROM base
 ),
 
@@ -56,7 +56,7 @@ session_summary AS (
         MIN(trip_start_timestamp) AS session_start_timestamp,
         MAX(trip_end_timestamp) AS session_end_timestamp,
         COUNT(*) AS total_trips,
-        DATE_DIFF('minute', MIN(trip_start_timestamp), MAX(trip_end_timestamp)) / 60.0 AS session_duration_hours,
+        TIMESTAMP_DIFF(MAX(trip_end_timestamp), MIN(trip_start_timestamp), MINUTE) / 60.0 AS session_duration_hours,
         -- exactly one non-null row per session
         MAX(pre_session_break_hours) AS break_before_session_hours
     FROM sessioned
