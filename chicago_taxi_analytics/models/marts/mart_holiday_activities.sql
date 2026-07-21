@@ -15,10 +15,7 @@ WITH cte_agg AS (
         SUM(total_driver_earnings)/SUM(total_trips) as driver_earnings_per_trip,
         (SUM(total_seconds)/60/60)/SUM(total_trips) as hours_per_trip,
         SUM(total_trips)/COUNT(DISTINCT taxi_id) trips_per_taxi
-    -- for local test
-    FROM 'int_taxi_daily_metrics.parquet'
-    -- for dbt prod
-    -- FROM {{ ref('int_taxi_daily_metrics') }}  
+    FROM {{ ref('int_taxi_daily_metrics') }}  
     GROUP BY 1
 ),
 
@@ -26,10 +23,7 @@ holiday_dates as (
     SELECT DISTINCT 
         trip_date,
         holiday_name
-    -- for local test
-    FROM 'int_taxi_daily_metrics.parquet' hols
-    -- for dbt prod
-    -- FROM {{ ref('int_taxi_daily_metrics') }} 
+    FROM {{ ref('int_taxi_daily_metrics') }} 
     WHERE is_holiday = 1
 ),
 

@@ -7,10 +7,7 @@ WITH base AS (
             PARTITION BY taxi_id
             ORDER BY trip_start_timestamp
         ) AS previous_trip_end_timestamp
-    -- for local test
-    FROM 'stg_taxi_trips.parquet'
-    -- for dbt prod
-    -- FROM {{ ref('stg_taxi_trips') }}
+    FROM {{ ref('stg_taxi_trips') }}
 ),
 
 trip_gaps AS (

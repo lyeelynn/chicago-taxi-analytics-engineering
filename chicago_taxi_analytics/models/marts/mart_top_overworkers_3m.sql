@@ -28,10 +28,7 @@ cte_agg AS (
         SUM(is_short_break) as short_break_count,
         SUM(is_short_break)/COUNT(DISTINCT session_id) as short_break_pct
 
-    -- for local test 
-    FROM 'int_taxi_work_sessions.parquet'
-    -- for dbt prod
-    -- FROM {{ ref('int_taxi_work_sessions') }}  
+    FROM {{ ref('int_taxi_work_sessions') }}  
     WHERE DATE(session_start_timestamp) >= (
         SELECT period_start_date
         FROM cte_date

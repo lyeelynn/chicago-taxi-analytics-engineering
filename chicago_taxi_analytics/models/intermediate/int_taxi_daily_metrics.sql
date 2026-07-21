@@ -3,10 +3,7 @@ WITH taxi_details as (
         taxi_id,
         taxi_company as taxi_company,
         date(trip_start_timestamp) as trip_date
-    -- for local test
-    FROM 'stg_taxi_trips.parquet' as trips
-    -- for dbt prod
-    -- FROM {{ ref('stg_taxi_trips') }} as trips
+    FROM {{ ref('stg_taxi_trips') }} as trips
     WHERE taxi_company IS NOT NULL
     QUALIFY ROW_NUMBER() OVER (
         PARTITION BY
@@ -40,10 +37,7 @@ daily_details as (
         sum(tips) as total_tips,
         sum(tolls) as total_tolls,
         sum(extras) as total_extras
-    -- for local test
-    FROM 'stg_taxi_trips.parquet' as trips
-    -- for dbt prod
-    -- FROM {{ ref('stg_taxi_trips') }} as trips
+    FROM {{ ref('stg_taxi_trips') }} as trips
     GROUP BY 1,2
 ),
 

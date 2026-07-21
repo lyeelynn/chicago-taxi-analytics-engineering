@@ -53,10 +53,7 @@ cte_agg AS (
         SUM(total_tips) / SUM(total_fare) as tips_pct_of_fare,
         SUM(total_tips) / SUM(total_driver_earnings) as tips_pct_of_driver_earnings 
 
-    -- for local test
-    FROM 'int_taxi_daily_metrics.parquet'
-    -- for dbt prod
-    -- FROM {{ ref('int_taxi_daily_metrics') }} 
+    FROM {{ ref('int_taxi_daily_metrics') }} 
     WHERE trip_date >= (SELECT period_start_date FROM cte_date)
     GROUP BY 1
 )
