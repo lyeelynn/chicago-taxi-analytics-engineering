@@ -13,7 +13,7 @@ WITH base AS (
 trip_gaps AS (
     SELECT
         *,
-        TIMESTAMP_DIFF(trip_start_timestamp, trip_start_timestamp, MINUTE) / 60.0 AS break_hours
+        TIMESTAMP_DIFF(trip_start_timestamp, previous_trip_end_timestamp, MINUTE) / 60.0 AS break_hours
     FROM base
 ),
 
@@ -22,7 +22,7 @@ flagged AS (
         *,
         CASE
             WHEN previous_trip_end_timestamp IS NULL THEN true
-            WHEN break_hours > 3 THEN true
+            WHEN break_hours > 4 THEN true
             ELSE false
         END AS is_new_session
     FROM trip_gaps
@@ -76,7 +76,7 @@ SELECT
         ELSE 0
     END is_short_break,
     CASE 
-        WHEN COALESCE(session_duration_hours, 0) > 9 THEN 1
+        WHEN COALESCE(session_duration_hours, 0) > 12 THEN 1
         ELSE 0
     END AS is_long_shift
 FROM session_summary

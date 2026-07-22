@@ -59,12 +59,11 @@ cte_agg AS (
 )
 
 SELECT
-    date.period_start_date,
-    date.period_end_date,
+    (SELECT period_start_date FROM cte_date) as period_start_date,
+    (SELECT period_end_date FROM cte_date) as period_end_date,
     agg.*,
     DENSE_RANK() OVER(ORDER BY total_revenue DESC) as rank_by_total_revenue,
     DENSE_RANK() OVER(ORDER BY total_driver_earnings DESC) as rank_by_total_driver_earnings,
     DENSE_RANK() OVER(ORDER BY total_tips DESC) as rank_by_total_tips,
     DENSE_RANK() OVER(ORDER BY tips_per_trip DESC) as rank_by_tips_per_trip
 FROM cte_agg agg
-CROSS JOIN cte_date date

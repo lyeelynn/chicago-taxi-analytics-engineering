@@ -57,9 +57,8 @@ cte_scored AS (
 )
 
 SELECT 
-    date.period_start_date,
-    date.period_end_date,
+    (SELECT period_start_date FROM cte_date) as period_start_date,
+    (SELECT period_end_date FROM cte_date) as period_end_date,
     scored.*,
     DENSE_RANK() OVER(ORDER BY overworker_score DESC) as overworker_rank
 FROM cte_scored scored
-CROSS JOIN cte_date date
