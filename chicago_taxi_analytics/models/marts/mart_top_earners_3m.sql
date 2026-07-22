@@ -42,16 +42,16 @@ cte_agg AS (
         SUM(total_driver_earnings)/COUNT(DISTINCT trip_date) as driver_earnings_per_active_day,
 
         -- per mile
-        SUM(total_fare)/SUM(total_miles) as fare_per_mile,
-        SUM(total_tips)/SUM(total_miles) as tips_per_mile,
-        SUM(total_extras)/SUM(total_miles) as extras_per_mile,
-        SUM(total_tolls)/SUM(total_miles) as tolls_per_mile,
-        SUM(total_revenue)/SUM(total_miles) as revenue_per_mile,
-        SUM(total_driver_earnings)/SUM(total_miles) as driver_earnings_per_mile,
+        SUM(total_fare)/NULLIF(SUM(total_miles),0) as fare_per_mile,
+        SUM(total_tips)/NULLIF(SUM(total_miles),0) as tips_per_mile,
+        SUM(total_extras)/NULLIF(SUM(total_miles),0) as extras_per_mile,
+        SUM(total_tolls)/NULLIF(SUM(total_miles),0) as tolls_per_mile,
+        SUM(total_revenue)/NULLIF(SUM(total_miles),0) as revenue_per_mile,
+        SUM(total_driver_earnings)/NULLIF(SUM(total_miles),0) as driver_earnings_per_mile,
 
         -- tips as pct
-        SUM(total_tips) / SUM(total_fare) as tips_pct_of_fare,
-        SUM(total_tips) / SUM(total_driver_earnings) as tips_pct_of_driver_earnings 
+        SUM(total_tips)/NULLIF(SUM(total_fare),0) as tips_pct_of_fare,
+        SUM(total_tips)/NULLIF(SUM(total_driver_earnings),0) as tips_pct_of_driver_earnings 
 
     FROM {{ ref('int_taxi_daily_metrics') }} 
     WHERE trip_date >= (SELECT period_start_date FROM cte_date)
