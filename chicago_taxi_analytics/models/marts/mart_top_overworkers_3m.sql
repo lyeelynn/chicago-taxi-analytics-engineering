@@ -52,7 +52,7 @@ cte_scored AS (
             (short_break_pct * 0.2) -- 20% weightage: short_breaks
         ) as overworker_score
     FROM cte_ranked
-    WHERE long_shift_pct >= 0 -- at least 30% shifts are long hours
+    WHERE long_shift_pct >= 0.3 -- at least 30% shifts are long hours
     AND short_break_count > 0 -- at least 1 short break
 )
 
