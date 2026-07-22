@@ -72,7 +72,7 @@ SELECT
         WHEN hol.holiday_name IS NOT NULL THEN 1
         ELSE 0
     END as is_holiday,
-    hol.holiday_name,
+    TRIM(UPPER(hol.holiday_name)) as holiday_name,
     td.taxi_company,
     dd.total_trips,
     dd.total_miles,
